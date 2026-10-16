@@ -3,61 +3,155 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b17">
 <title>Stock Market | Saksham</title>
+
+<!-- STOCK MARKET BROWSER TAB LOGO -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23080b17'/%3E%3Cpath d='M15 65 L35 45 L50 58 L78 25 M60 25 H78 V43' fill='none' stroke='%2334d399' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080b17;color:#f4f5ff;font-family:Arial,sans-serif}
-body:before{content:"";position:fixed;inset:-50%;z-index:-1;background:radial-gradient(ellipse at 20% 25%,#492477,transparent 40%),radial-gradient(ellipse at 80% 65%,#104765,transparent 40%);animation:bg 12s infinite alternate}
+body{
+ margin:0;background:#080b17;color:#f4f5ff;
+ font-family:Arial,Helvetica,sans-serif;min-height:100vh
+}
+body:before{
+ content:"";position:fixed;inset:-50%;z-index:-1;
+ background:radial-gradient(ellipse at 20% 25%,#492477,transparent 40%),
+ radial-gradient(ellipse at 80% 65%,#104765,transparent 40%);
+ animation:bg 12s infinite alternate;pointer-events:none
+}
 @keyframes bg{to{transform:translate(5%,4%) scale(1.12)}}
-header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:17px 5%;background:#090d1bea;border-bottom:1px solid #34405c}
-.logo{font-size:24px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#c4b5fd,#67e8f9);color:transparent;background-clip:text}
-.wallet{background:#16253b;border:1px solid #405574;padding:12px 16px;border-radius:12px;font-weight:bold}
+header{
+ position:sticky;top:0;z-index:5;display:flex;
+ justify-content:space-between;align-items:center;
+ gap:12px;flex-wrap:wrap;padding:15px 5%;
+ background:#090d1bf2;border-bottom:1px solid #34405c;
+ backdrop-filter:blur(14px)
+}
+.logo{
+ display:flex;align-items:center;gap:10px;font-size:23px;
+ font-weight:900;letter-spacing:1px;
+ background:linear-gradient(90deg,#c4b5fd,#67e8f9);
+ color:transparent;background-clip:text
+}
+.logo svg{width:35px;height:35px;flex-shrink:0}
+.wallet{
+ background:#16253b;border:1px solid #405574;
+ padding:12px 15px;border-radius:12px;font-weight:bold
+}
 main{max-width:1150px;margin:auto;padding:22px 15px}
-h1{font-size:clamp(30px,5vw,48px)}p{color:#b9c5da;line-height:1.55}
-button{border:0;border-radius:9px;padding:12px 15px;background:#6853e4;color:white;font-weight:bold;cursor:pointer;margin:3px}
+h1{font-size:clamp(30px,5vw,48px)}
+p{color:#b9c5da;line-height:1.55}
+button{
+ border:0;border-radius:9px;padding:11px 14px;
+ background:#6853e4;color:white;font-weight:bold;
+ cursor:pointer;margin:3px
+}
 button:hover{filter:brightness(1.2)}
+button:focus-visible{outline:2px solid #67e8f9}
 .secondary{background:#202b41;border:1px solid #43516e}
-.green{background:#087f63}.red{background:#a43c55}
+.green{background:#087f63}
+.red{background:#a43c55}
 .hidden{display:none!important}
 .hero{text-align:center;padding:30px 0}
-.tag{display:inline-block;padding:7px 11px;border-radius:20px;background:#202b42;color:#a5f3fc;font-size:12px}
-.buttons,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
-.homebtn{min-height:100px;font-size:18px;background:linear-gradient(130deg,#38236f,#174e70);border:1px solid #53618c}
+.tag{
+ display:inline-block;padding:7px 11px;border-radius:20px;
+ background:#202b42;color:#a5f3fc;font-size:12px
+}
+.buttons,.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:14px
+}
+.homebtn{
+ min-height:100px;font-size:18px;
+ background:linear-gradient(130deg,#38236f,#174e70);
+ border:1px solid #53618c
+}
 .homebtn small{display:block;margin-top:8px;color:#d0dcf2}
-.panel,.card{background:#111a2bf0;border:1px solid #293751;border-radius:15px;padding:18px;margin-bottom:17px}
-.card .pic{font-size:45px}.price{font-size:22px;font-weight:bold;color:#a5f3fc;margin:12px 0}
+.panel,.card{
+ background:#111a2bf2;border:1px solid #293751;
+ border-radius:15px;padding:18px;margin-bottom:17px;min-width:0
+}
+.pic{font-size:45px}
+.price{font-size:22px;font-weight:bold;color:#a5f3fc;margin:12px 0}
 small{color:#a9b8d0}
 .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-input{width:100%;padding:12px;margin:8px 0 14px;border-radius:8px;background:#0b1221;border:1px solid #3c4b69;color:white}
+input{
+ width:100%;padding:12px;margin:8px 0 14px;
+ border-radius:8px;background:#0b1221;
+ border:1px solid #3c4b69;color:white
+}
 label{font-size:13px;color:#cbd5e1}
-#chart{width:100%;height:350px;display:block;background:#fff;border-radius:8px}
-.chartinfo{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
-.stockrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #ffffff1a;padding:13px 0}
+#chart{
+ width:100%;height:350px;display:block;
+ background:#fff;border-radius:8px
+}
+.chartinfo{
+ display:flex;justify-content:space-between;
+ gap:10px;flex-wrap:wrap;align-items:center
+}
+.stockrow{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px;flex-wrap:wrap;
+ border-bottom:1px solid #ffffff1a;padding:13px 0
+}
 .notice{font-size:12px;color:#98abc7}
 #message{color:#a5f3fc;min-height:24px;margin:12px 0}
-footer{text-align:center;padding:25px;color:#aab7d0;border-top:1px solid #293751;margin-top:30px;letter-spacing:1px}
-@media(max-width:500px){#chart{height:260px}.logo{font-size:20px}main{padding:15px 10px}}
+footer{
+ text-align:center;padding:25px;color:#aab7d0;
+ border-top:1px solid #293751;margin-top:30px;letter-spacing:1px
+}
+@media(max-width:500px){
+ #chart{height:260px}
+ .logo{font-size:18px}
+ main{padding:15px 10px}
+ .panel,.card{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
 <header>
- <div class="logo">✦ STOCK MARKET</div>
- <div class="wallet">💰 $<span id="balance">25.00</span></div>
+ <div class="logo">
+  <svg viewBox="0 0 100 100" aria-label="Stock Market logo">
+   <rect width="100" height="100" rx="22" fill="#080b17"/>
+   <path d="M15 65 L35 45 L50 58 L78 25 M60 25 H78 V43"
+    fill="none" stroke="#34d399" stroke-width="8"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span>STOCK MARKET</span>
+ </div>
+ <div class="wallet">💰 <span id="balance">$25.00</span></div>
 </header>
 
 <main>
+
+<!-- HOME -->
 <section id="home">
  <div class="hero">
   <span class="tag">YOUR VIRTUAL FINANCE WORLD</span>
   <h1>Build Your <span style="color:#a78bfa">Empire.</span></h1>
-  <p>Trade stocks and gold, buy your dream car or house, and grow your virtual wealth!</p>
+  <p>Trade stocks and gold, buy your dream car or house,
+  and grow your virtual wealth!</p>
+
   <div class="buttons">
-   <button class="homebtn" onclick="page('withdraw')">💳 Withdraw<small>Wallet and payment card</small></button>
-   <button class="homebtn" onclick="page('market')">🛍️ Market<small>Cars, houses, clothes and more</small></button>
-   <button class="homebtn" onclick="page('stocks')">📈 Stock Market<small>Six interactive markets</small></button>
+   <button class="homebtn" onclick="page('withdraw')">
+    💳 Wallet<small>Virtual card and balance</small>
+   </button>
+   <button class="homebtn" onclick="page('market')">
+    🛍️ Market<small>Cars, houses, clothes and more</small>
+   </button>
+   <button class="homebtn" onclick="page('stocks')">
+    📈 Stock Market<small>Six interactive markets</small>
+   </button>
   </div>
  </div>
+
  <div class="panel">
   <h2>📊 Your Dashboard</h2>
   <div class="grid">
@@ -69,9 +163,11 @@ footer{text-align:center;padding:25px;color:#aab7d0;border-top:1px solid #293751
  </div>
 </section>
 
+<!-- WALLET -->
 <section id="withdraw" class="hidden">
  <button class="secondary" onclick="page('home')">← Back Home</button>
  <h1>💳 Wallet</h1>
+
  <div class="grid">
   <div class="panel">
    <h2>Your Virtual Card</h2>
@@ -80,26 +176,33 @@ footer{text-align:center;padding:25px;color:#aab7d0;border-top:1px solid #293751
     <div style="font-size:22px;margin:32px 0">•••• •••• •••• 2048</div>
     VIRTUAL PLAYER · SIMULATOR
    </div>
-   <p>Balance: $<span class="cash">25.00</span></p>
+   <p>Balance: <strong id="walletbalance">$25.00</strong></p>
   </div>
+
   <div class="panel">
    <h2>Withdraw Virtual Money</h2>
-   <label>Amount ($)</label><input id="withdrawamt" type="number" min=".01" placeholder="Enter amount">
+   <label for="withdrawamt">Amount ($)</label>
+   <input id="withdrawamt" type="number" min="0.01" step="0.01" placeholder="Enter amount">
    <button class="green" onclick="withdraw()">Withdraw</button>
+
    <hr style="border-color:#293751;margin:22px 0">
-   <h2>Online Payment</h2>
+
+   <h2>Add Virtual Money</h2>
    <p>Add fictional money to your game wallet.</p>
-   <label>Amount ($)</label><input id="depositamt" type="number" min="1" placeholder="Enter amount">
+   <label for="depositamt">Amount ($1–$1,000,000)</label>
+   <input id="depositamt" type="number" min="1" max="1000000" step="0.01" placeholder="Enter amount">
    <button onclick="deposit()">＋ Add Virtual Money</button>
-   <p class="notice">Simulated only. No real payments or withdrawals are possible.</p>
+   <p class="notice">Simulator only. No real payments or withdrawals are possible.</p>
   </div>
  </div>
 </section>
 
+<!-- SHOPPING MARKET -->
 <section id="market" class="hidden">
  <button class="secondary" onclick="page('home')">← Back Home</button>
  <h1>🛍️ Luxury Market</h1>
  <p>Buy items with your virtual cash.</p>
+
  <div class="row">
   <button class="secondary" onclick="filter('All')">All</button>
   <button class="secondary" onclick="filter('Cars')">🚘 Cars</button>
@@ -107,42 +210,62 @@ footer{text-align:center;padding:25px;color:#aab7d0;border-top:1px solid #293751
   <button class="secondary" onclick="filter('Fashion')">👟 Fashion</button>
   <button class="secondary" onclick="filter('Other')">✨ Other</button>
  </div>
+
  <div id="shop" class="grid" style="margin-top:18px"></div>
  <div class="panel"><h2>🎒 My Purchases</h2><div id="inventory">Nothing purchased yet.</div></div>
 </section>
 
+<!-- STOCK MARKET -->
 <section id="stocks" class="hidden">
  <button class="secondary" onclick="page('home')">← Back Home</button>
  <h1>📈 Trading Floor</h1>
  <p>Watch red and green candlesticks move as the simulated market changes.</p>
+
  <div class="panel">
   <div class="row" id="marketbuttons"></div>
+
   <div class="chartinfo">
-   <div><h2 id="chartname">Nova Technologies</h2><div class="price" id="chartprice">$5.00</div></div>
-   <div><span class="tag" id="chartchange">MARKET OPEN</span></div>
+   <div>
+    <h2 id="chartname">Nova Technologies</h2>
+    <div class="price" id="chartprice">$5.00</div>
+   </div>
+   <span class="tag" id="chartchange">MARKET OPEN</span>
   </div>
-  <canvas id="chart" aria-label="Simulated candlestick stock chart"></canvas>
+
+  <canvas id="chart" aria-label="Simulated stock candlestick chart"></canvas>
   <p class="notice">Green = price rose. Red = price fell. Each candle shows open, high, low and close.</p>
+
   <div class="row">
    <button onclick="trade(1)">＋ Buy 1 Share</button>
    <button class="red" onclick="trade(-1)">− Sell 1 Share</button>
-   <button class="secondary" onclick="updatePrices()">↻ Update Prices</button>
+   <button class="secondary" onclick="updatePrices(true)">↻ Update Prices</button>
   </div>
+
   <p id="selectedshares">Shares owned: 0</p>
  </div>
+
  <div class="panel"><h2>All Markets</h2><div id="stocklist"></div></div>
  <div class="panel"><h2>💼 My Investments</h2><div id="portfolio">No investments yet.</div></div>
 </section>
-<div id="message" role="status"></div>
-<p class="notice">Fictional prices and virtual money only. This is not connected to real stock exchanges.</p>
+
+<div id="message" role="status" aria-live="polite"></div>
+<p class="notice">Fictional prices and virtual money only. Not connected to real stock exchanges.</p>
 </main>
 
 <footer>Made by Saksham Mishra</footer>
 
 <script>
-let cash=25, selected=0, filtercat="All", holdings={}, inventory=[];
+"use strict";
 
-const stocks=[
+const SAVE_KEY = "sakshamStockMarketSaveV2";
+
+let cash = 25;
+let selected = 0;
+let filtercat = "All";
+let holdings = {};
+let inventory = [];
+
+const stocks = [
  {id:"nova",name:"Nova Technologies",market:"Technology Market",price:5,history:[]},
  {id:"orbit",name:"Orbit Motors",market:"Automotive Market",price:4,history:[]},
  {id:"green",name:"Green Energy Co.",market:"Energy Market",price:3,history:[]},
@@ -151,193 +274,462 @@ const stocks=[
  {id:"gold",name:"Gold",market:"Gold Market",price:10,history:[]}
 ];
 
-const items=[
- ["Sports Car","🏎️",18,"Cars"],["Luxury SUV","🚙",80,"Cars"],
- ["Supercar","🏎️",250,"Cars"],["Family Car","🚗",35,"Cars"],
- ["Private Jet","✈️",800,"Cars"],["Super Yacht","🛥️",350,"Cars"],
- ["Modern House","🏡",100,"Houses"],["Luxury Villa","🏰",500,"Houses"],
- ["City Apartment","🏢",65,"Houses"],["Mountain Mansion","🏔️",400,"Houses"],
- ["Sneakers","👟",12,"Fashion"],["Designer Outfit","👕",20,"Fashion"],
- ["Luxury Watch","⌚",35,"Fashion"],["Sunglasses","🕶️",8,"Fashion"],
- ["Gaming PC","🖥️",45,"Other"],["Gold Bar","🥇",30,"Other"],
- ["Diamond","💎",50,"Other"],["Gaming Console","🎮",25,"Other"],
- ["Headphones","🎧",15,"Other"],["Luxury Phone","📱",40,"Other"]
-].map(([name,emoji,price,category])=>({name,emoji,price,category}));
+const items = [
+ ["Sports Car","🏎️",18,"Cars"],
+ ["Luxury SUV","🚙",80,"Cars"],
+ ["Supercar","🏎️",250,"Cars"],
+ ["Family Car","🚗",35,"Cars"],
+ ["Private Jet","✈️",800,"Cars"],
+ ["Super Yacht","🛥️",350,"Cars"],
+ ["Modern House","🏡",100,"Houses"],
+ ["Luxury Villa","🏰",500,"Houses"],
+ ["City Apartment","🏢",65,"Houses"],
+ ["Mountain Mansion","🏔️",400,"Houses"],
+ ["Sneakers","👟",12,"Fashion"],
+ ["Designer Outfit","👕",20,"Fashion"],
+ ["Luxury Watch","⌚",35,"Fashion"],
+ ["Sunglasses","🕶️",8,"Fashion"],
+ ["Gaming PC","🖥️",45,"Other"],
+ ["Gold Bar","🥇",30,"Other"],
+ ["Diamond","💎",50,"Other"],
+ ["Gaming Console","🎮",25,"Other"],
+ ["Headphones","🎧",15,"Other"],
+ ["Luxury Phone","📱",40,"Other"]
+].map(([name,emoji,price,category]) => ({name,emoji,price,category}));
 
-function money(n){return "$"+n.toFixed(2)}
-function say(s){document.getElementById("message").textContent=s}
+function money(n){
+ return "$" + Number(n).toFixed(2);
+}
 
-stocks.forEach(s=>{
- let p=s.price;
- for(let i=0;i<35;i++){
-  let open=p;
-  let close=Math.max(.5,open*(1+(Math.random()-.48)*.06));
-  let high=Math.max(open,close)*(1+Math.random()*.025);
-  let low=Math.min(open,close)*(1-Math.random()*.025);
-  s.history.push({open,high,low,close});
-  p=close;
+function say(text){
+ document.getElementById("message").textContent = text;
+}
+
+function saveGame(){
+ try{
+  localStorage.setItem(SAVE_KEY,JSON.stringify({
+   cash,
+   holdings,
+   inventory:inventory.map(item=>item.name),
+   stocks:stocks.map(stock=>({
+    id:stock.id,
+    price:stock.price,
+    history:stock.history
+   }))
+  }));
+ }catch(error){
+  // The game still works if browser storage is unavailable.
  }
- s.price=p;
-});
+}
+
+function loadGame(){
+ try{
+  const raw = localStorage.getItem(SAVE_KEY);
+  if(!raw) return;
+
+  const data = JSON.parse(raw);
+  if(!data || typeof data !== "object") return;
+
+  if(Number.isFinite(data.cash) && data.cash >= 0){
+   cash = data.cash;
+  }
+
+  if(data.holdings && typeof data.holdings === "object"){
+   holdings = data.holdings;
+  }
+
+  if(Array.isArray(data.inventory)){
+   inventory = data.inventory
+    .map(name=>items.find(item=>item.name===name))
+    .filter(Boolean);
+  }
+
+  if(Array.isArray(data.stocks)){
+   data.stocks.forEach(saved=>{
+    const stock = stocks.find(s=>s.id===saved.id);
+    if(!stock) return;
+
+    if(Number.isFinite(saved.price) && saved.price > 0){
+     stock.price = saved.price;
+    }
+
+    if(Array.isArray(saved.history)){
+     stock.history = saved.history
+      .filter(c=>c && ["open","high","low","close"].every(
+       key=>Number.isFinite(c[key]) && c[key] > 0
+      )).slice(-60);
+    }
+   });
+  }
+
+  stocks.forEach(stock=>{
+   const count = Number(holdings[stock.id] || 0);
+   holdings[stock.id] = Number.isInteger(count) && count > 0 ? count : 0;
+  });
+ }catch(error){
+  // Ignore invalid saved data and start with a fresh game.
+ }
+}
+
+function initializeHistory(){
+ stocks.forEach(stock=>{
+  if(stock.history.length) return;
+
+  let price = stock.price;
+
+  for(let i=0;i<35;i++){
+   const open = price;
+   const close = Math.max(0.5,open*(1+(Math.random()-0.48)*0.06));
+   const high = Math.max(open,close)*(1+Math.random()*0.025);
+   const low = Math.max(0.1,Math.min(open,close)*(1-Math.random()*0.025));
+
+   stock.history.push({open,high,low,close});
+   price = close;
+  }
+
+  stock.price = price;
+ });
+}
 
 function page(id){
- document.querySelectorAll("main > section").forEach(s=>s.classList.add("hidden"));
+ document.querySelectorAll("main > section").forEach(section=>{
+  section.classList.add("hidden");
+ });
+
  document.getElementById(id).classList.remove("hidden");
- say("");render();window.scrollTo({top:0,behavior:"smooth"});
+ say("");
+ render();
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function render(){
- document.getElementById("balance").textContent=cash.toFixed(2);
- document.querySelectorAll(".cash").forEach(e=>e.textContent=cash.toFixed(2));
- let iv=stocks.reduce((sum,s)=>sum+(holdings[s.id]||0)*s.price,0);
- document.getElementById("cashdash").textContent=money(cash);
- document.getElementById("investdash").textContent=money(iv);
- document.getElementById("wealthdash").textContent=money(cash+iv);
- document.getElementById("owneddash").textContent=inventory.length;
- renderShop();renderStocks();renderPortfolio();renderInventory();drawChart();
+ document.getElementById("balance").textContent = money(cash);
+ document.getElementById("walletbalance").textContent = money(cash);
+
+ const investmentValue = stocks.reduce(
+  (total,stock)=>total+(holdings[stock.id]||0)*stock.price,0
+ );
+
+ document.getElementById("cashdash").textContent = money(cash);
+ document.getElementById("investdash").textContent = money(investmentValue);
+ document.getElementById("wealthdash").textContent = money(cash+investmentValue);
+ document.getElementById("owneddash").textContent = inventory.length;
+
+ renderShop();
+ renderStocks();
+ renderPortfolio();
+ renderInventory();
+ drawChart();
+ saveGame();
 }
 
 function withdraw(){
- let n=Number(document.getElementById("withdrawamt").value);
- if(!Number.isFinite(n)||n<=0){say("Enter a valid amount.");return}
- if(n>cash){say("Not enough virtual cash.");return}
- cash-=n;render();say(money(n)+" withdrawn from virtual wallet.");
-}
-function deposit(){
- let n=Number(document.getElementById("depositamt").value);
- if(!Number.isFinite(n)||n<=0||n>1000000){say("Enter an amount between $1 and $1,000,000.");return}
- cash+=n;render();say(money(n)+" virtual money added!");
+ const input = document.getElementById("withdrawamt");
+ const amount = Number(input.value);
+
+ if(!Number.isFinite(amount) || amount<=0){
+  say("Enter a valid amount greater than $0.");
+  return;
+ }
+
+ if(amount>cash){
+  say("Not enough virtual cash.");
+  return;
+ }
+
+ cash = Math.round((cash-amount)*100)/100;
+ input.value = "";
+ render();
+ say(money(amount)+" removed from your virtual wallet.");
 }
 
-function filter(c){filtercat=c;renderShop()}
+function deposit(){
+ const input = document.getElementById("depositamt");
+ const amount = Number(input.value);
+
+ if(!Number.isFinite(amount) || amount<1 || amount>1000000){
+  say("Enter an amount between $1 and $1,000,000.");
+  return;
+ }
+
+ cash = Math.round((cash+amount)*100)/100;
+ input.value = "";
+ render();
+ say(money(amount)+" virtual money added!");
+}
+
+function filter(category){
+ filtercat = category;
+ renderShop();
+}
+
 function renderShop(){
- let list=items.filter(i=>filtercat==="All"||i.category===filtercat);
- document.getElementById("shop").innerHTML=list.map(i=>`
- <div class="card"><div class="pic">${i.emoji}</div>
- <small>${i.category}</small><h3>${i.name}</h3>
- <div class="price">${money(i.price)}</div>
- <button onclick="buyItem('${i.name}')">Buy Item</button></div>`).join("");
+ const list = items.filter(item=>
+  filtercat==="All" || item.category===filtercat
+ );
+
+ document.getElementById("shop").innerHTML = list.map(item=>`
+  <div class="card">
+   <div class="pic">${item.emoji}</div>
+   <small>${item.category}</small>
+   <h3>${item.name}</h3>
+   <div class="price">${money(item.price)}</div>
+   <button onclick="buyItem('${item.name}')">Buy Item</button>
+  </div>
+ `).join("");
 }
+
 function buyItem(name){
- let i=items.find(x=>x.name===name);
- if(!i)return;
- if(cash<i.price){say("Not enough cash. Sell shares or add virtual money.");return}
- cash-=i.price;inventory.push(i);render();say("You bought "+name+"!");
+ const item = items.find(x=>x.name===name);
+ if(!item) return;
+
+ if(cash<item.price){
+  say("Not enough cash. Sell shares or add virtual money.");
+  return;
+ }
+
+ cash = Math.round((cash-item.price)*100)/100;
+ inventory.push(item);
+ render();
+ say("You bought "+name+"!");
 }
+
 function renderInventory(){
- document.getElementById("inventory").innerHTML=inventory.length?
- inventory.map(i=>i.emoji+" "+i.name).join(" · "):"Nothing purchased yet.";
+ document.getElementById("inventory").textContent = inventory.length
+  ? inventory.map(item=>item.emoji+" "+item.name).join(" · ")
+  : "Nothing purchased yet.";
 }
 
 function renderStocks(){
- document.getElementById("marketbuttons").innerHTML=stocks.map((s,i)=>
- `<button class="${i===selected?'':'secondary'}" onclick="selectStock(${i})">${s.id==="gold"?"🥇 ":""}${s.market}</button>`
- ).join("");
- let s=stocks[selected];
- document.getElementById("chartname").textContent=s.name+" — "+s.market;
- document.getElementById("chartprice").textContent=money(s.price);
- let candles=s.history, last=candles[candles.length-1];
- let change=last.close-last.open;
- let el=document.getElementById("chartchange");
- el.textContent=(change>=0?"▲ ":"▼ ")+money(Math.abs(change));
- el.style.color=change>=0?"#16a34a":"#dc2626";
- document.getElementById("selectedshares").textContent="Shares owned: "+(holdings[s.id]||0);
- document.getElementById("stocklist").innerHTML=stocks.map((x,i)=>`
- <div class="stockrow"><div><b>${x.name}</b><br><small>${x.market}</small></div>
- <div><b>${money(x.price)}</b><br><small>Shares: ${holdings[x.id]||0}</small></div>
- <button onclick="selectStock(${i})">View Chart</button></div>`).join("");
+ document.getElementById("marketbuttons").innerHTML = stocks.map((stock,index)=>`
+  <button class="${index===selected?'':'secondary'}" onclick="selectStock(${index})">
+   ${stock.id==="gold"?"🥇 ":""}${stock.market}
+  </button>
+ `).join("");
+
+ const stock = stocks[selected];
+ const last = stock.history[stock.history.length-1];
+
+ document.getElementById("chartname").textContent =
+  stock.name+" — "+stock.market;
+
+ document.getElementById("chartprice").textContent = money(stock.price);
+
+ const change = last ? last.close-last.open : 0;
+ const changeElement = document.getElementById("chartchange");
+
+ changeElement.textContent =
+  (change>=0 ? "▲ +" : "▼ −") + money(Math.abs(change));
+
+ changeElement.style.color = change>=0 ? "#16a34a" : "#dc2626";
+
+ document.getElementById("selectedshares").textContent =
+  "Shares owned: "+(holdings[stock.id]||0);
+
+ document.getElementById("stocklist").innerHTML = stocks.map((item,index)=>`
+  <div class="stockrow">
+   <div><b>${item.name}</b><br><small>${item.market}</small></div>
+   <div><b>${money(item.price)}</b><br><small>Shares: ${holdings[item.id]||0}</small></div>
+   <button onclick="selectStock(${index})">View Chart</button>
+  </div>
+ `).join("");
 }
 
-function selectStock(i){selected=i;render();}
+function selectStock(index){
+ if(index<0 || index>=stocks.length) return;
+ selected = index;
+ render();
+}
 
 function renderPortfolio(){
- let list=stocks.filter(s=>(holdings[s.id]||0)>0);
- document.getElementById("portfolio").innerHTML=list.length?list.map(s=>
- `<div class="stockrow"><span>${s.name}<br><small>${holdings[s.id]} share(s)</small></span>
- <b>${money(s.price*(holdings[s.id]||0))}</b>
- <button class="red" onclick="sellAll('${s.id}')">Sell All</button></div>`
- ).join(""):"No investments yet. Buy shares to start!";
+ const list = stocks.filter(stock=>(holdings[stock.id]||0)>0);
+
+ document.getElementById("portfolio").innerHTML = list.length
+  ? list.map(stock=>`
+   <div class="stockrow">
+    <span>${stock.name}<br><small>${holdings[stock.id]} share(s)</small></span>
+    <b>${money(stock.price*holdings[stock.id])}</b>
+    <button class="red" onclick="sellAll('${stock.id}')">Sell All</button>
+   </div>
+  `).join("")
+  : "No investments yet. Buy shares to start!";
 }
 
 function trade(direction){
- let s=stocks[selected], shares=holdings[s.id]||0;
+ const stock = stocks[selected];
+ const shares = holdings[stock.id]||0;
+
  if(direction===1){
-  if(cash<s.price){say("Not enough cash to buy this share.");return}
-  cash-=s.price;holdings[s.id]=shares+1;say("Bought one share of "+s.name+"!");
+  if(cash+0.000001<stock.price){
+   say("Not enough cash to buy this share.");
+   return;
+  }
+
+  cash = Math.round((cash-stock.price)*100)/100;
+  holdings[stock.id] = shares+1;
+  say("Bought one share of "+stock.name+"!");
  }else{
-  if(shares<1){say("You do not own a share to sell.");return}
-  cash+=s.price;holdings[s.id]=shares-1;say("Sold one share of "+s.name+"!");
+  if(shares<1){
+   say("You do not own a share to sell.");
+   return;
+  }
+
+  cash = Math.round((cash+stock.price)*100)/100;
+  holdings[stock.id] = shares-1;
+  say("Sold one share of "+stock.name+"!");
  }
+
  render();
 }
+
 function sellAll(id){
- let s=stocks.find(x=>x.id===id),n=holdings[id]||0;
- if(!s||n===0)return;
- cash+=n*s.price;holdings[id]=0;render();say("All shares sold!");
+ const stock = stocks.find(item=>item.id===id);
+ const count = holdings[id]||0;
+
+ if(!stock || count===0) return;
+
+ cash = Math.round((cash+count*stock.price)*100)/100;
+ holdings[id] = 0;
+ render();
+ say("All shares sold!");
 }
 
-// DRAW REAL CANDLESTICK SHAPES ON CANVAS
 function drawChart(){
- const canvas=document.getElementById("chart");
- if(document.getElementById("stocks").classList.contains("hidden"))return;
- const rect=canvas.getBoundingClientRect();
- if(rect.width<1)return;
- const dpr=window.devicePixelRatio||1;
- canvas.width=Math.round(rect.width*dpr);
- canvas.height=Math.round(rect.height*dpr);
- const ctx=canvas.getContext("2d");
+ const canvas = document.getElementById("chart");
+
+ if(document.getElementById("stocks").classList.contains("hidden")) return;
+
+ const rect = canvas.getBoundingClientRect();
+ if(rect.width<1 || rect.height<1) return;
+
+ const dpr = Math.max(1,window.devicePixelRatio||1);
+
+ canvas.width = Math.round(rect.width*dpr);
+ canvas.height = Math.round(rect.height*dpr);
+
+ const ctx = canvas.getContext("2d");
  ctx.setTransform(dpr,0,0,dpr,0,0);
- const w=rect.width,h=rect.height;
- ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);
- const data=stocks[selected].history.slice(-42);
- let min=Math.min(...data.map(c=>c.low));
- let max=Math.max(...data.map(c=>c.high));
- let pad=(max-min)*.12||1;min-=pad;max+=pad;
- const left=12,right=48,top=18,bottom=25;
- const cw=w-left-right,ch=h-top-bottom;
- const y=p=>top+(max-p)/(max-min)*ch;
- ctx.font="11px Arial";ctx.textAlign="left";
- for(let i=0;i<=5;i++){
-  let yy=top+ch*i/5;
-  let val=max-(max-min)*i/5;
-  ctx.strokeStyle="#e5e7eb";ctx.lineWidth=1;
-  ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(w-right+4,yy);ctx.stroke();
-  ctx.fillStyle="#555";ctx.fillText(val.toFixed(2),w-right+7,yy+4);
+
+ const w = rect.width;
+ const h = rect.height;
+
+ ctx.fillStyle = "#ffffff";
+ ctx.fillRect(0,0,w,h);
+
+ const data = stocks[selected].history.slice(-42);
+ if(!data.length) return;
+
+ let min = Math.min(...data.map(c=>c.low));
+ let max = Math.max(...data.map(c=>c.high));
+
+ if(max-min<0.01){
+  max += 1;
+  min = Math.max(0,min-1);
  }
+
+ const pad = (max-min)*0.12;
+ min = Math.max(0,min-pad);
+ max += pad;
+
+ const left=12,right=52,top=18,bottom=25;
+ const cw=Math.max(1,w-left-right);
+ const ch=Math.max(1,h-top-bottom);
+
+ const y = price=>top+(max-price)/(max-min)*ch;
+
+ ctx.font = "11px Arial";
+ ctx.textAlign = "left";
+
+ for(let i=0;i<=5;i++){
+  const yy=top+ch*i/5;
+  const value=max-(max-min)*i/5;
+
+  ctx.strokeStyle="#e5e7eb";
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(left,yy);
+  ctx.lineTo(w-right+2,yy);
+  ctx.stroke();
+
+  ctx.fillStyle="#555";
+  ctx.fillText(value.toFixed(2),w-right+5,yy+4);
+ }
+
  const step=cw/data.length;
- const bodyWidth=Math.max(3,Math.min(11,step*.62));
- data.forEach((c,i)=>{
-  let x=left+i*step+step/2;
+ const bodyWidth=Math.max(2,Math.min(11,step*0.62));
+
+ data.forEach((c,index)=>{
+  const x=left+index*step+step/2;
   const rising=c.close>=c.open;
   const color=rising?"#16b84e":"#ed3745";
-  ctx.strokeStyle=color;ctx.lineWidth=1;
-  ctx.beginPath();ctx.moveTo(x,y(c.high));ctx.lineTo(x,y(c.low));ctx.stroke();
-  const y1=y(c.open),y2=y(c.close);
+
+  // Candle wick
+  ctx.strokeStyle=color;
+  ctx.lineWidth=1.2;
+  ctx.beginPath();
+  ctx.moveTo(x,y(c.high));
+  ctx.lineTo(x,y(c.low));
+  ctx.stroke();
+
+  // Candle body
+  const yOpen=y(c.open);
+  const yClose=y(c.close);
+
   ctx.fillStyle=color;
-  ctx.fillRect(x-bodyWidth/2,Math.min(y1,y2),bodyWidth,Math.max(1.5,Math.abs(y2-y1)));
+  ctx.fillRect(
+   x-bodyWidth/2,
+   Math.min(yOpen,yClose),
+   bodyWidth,
+   Math.max(1.5,Math.abs(yClose-yOpen))
+  );
  });
- ctx.strokeStyle="#d1d5db";ctx.beginPath();
- ctx.moveTo(left,top);ctx.lineTo(left,top+ch);ctx.lineTo(w-right,top+ch);ctx.stroke();
+
+ ctx.strokeStyle="#d1d5db";
+ ctx.beginPath();
+ ctx.moveTo(left,top);
+ ctx.lineTo(left,top+ch);
+ ctx.lineTo(w-right,top+ch);
+ ctx.stroke();
 }
 
-function updatePrices(){
- stocks.forEach(s=>{
-  const prev=s.price;
-  // Slight upward average drift, with normal random rises and falls.
-  const pct=(Math.random()-.43)*.045;
-  const next=Math.max(.5,Math.round(prev*(1+pct)*100)/100);
-  const open=prev,close=next;
-  const high=Math.max(open,close)*(1+Math.random()*.018);
-  const low=Math.min(open,close)*(1-Math.random()*.018);
-  s.price=close;
-  s.history.push({open,high,low,close});
-  if(s.history.length>60)s.history.shift();
+function updatePrices(showMessage=false){
+ stocks.forEach(stock=>{
+  const previous=stock.price;
+
+  // Prices rise and fall randomly, with a slight upward bias.
+  const percentage=(Math.random()-0.43)*0.045;
+  const next=Math.max(
+   0.5,
+   Math.round(previous*(1+percentage)*100)/100
+  );
+
+  const open=previous;
+  const close=next;
+  const high=Math.max(open,close)*(1+Math.random()*0.018);
+  const low=Math.max(0.1,Math.min(open,close)*(1-Math.random()*0.018));
+
+  stock.price=close;
+  stock.history.push({open,high,low,close});
+
+  if(stock.history.length>60){
+   stock.history.shift();
+  }
  });
+
  render();
+
+ if(showMessage) say("Market prices updated!");
 }
-window.addEventListener("resize",drawChart);
+
+// INITIALIZE GAME
+initializeHistory();
+loadGame();
 render();
-setInterval(updatePrices,3000);
+
+window.addEventListener("resize",drawChart);
+
+// Automatic price updates every 3 seconds.
+setInterval(()=>updatePrices(false),3000);
 </script>
 </body>
 </html>
